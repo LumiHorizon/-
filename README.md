@@ -18,16 +18,27 @@
 │   ├── distill_YYYY-MM-DD_morning.md  # 每日早盘蒸馏
 │   ├── distill_YYYY-MM-DD_review.md   # 每日复盘蒸馏
 │   └── distill_YYYY-MM_videos.md      # 当月视频蒸馏
-├── em_fetch.py                    # ★ 东方财富取数（行情+K线，稳定直连）
-├── bili_*.py / asr_transcribe.py  # B站抓取 / 字幕 / 语音转写脚本
-├── boll7_scan.py                  # 选股扫描脚本
-├── make_ppt_*.py                  # PPT 生成脚本
-├── qfps_*.json / *.txt            # 抓取的原始语料/目录/动态存档
-├── subtitles/                     # 视频字幕原文
-└── skills/qfps-stock/SKILL.md     # ★ Claude Code Skill（跨项目/跨机复用）
+├── skills/qfps-stock/SKILL.md     # ★ Claude Code Skill（跨项目/跨机复用）
+│
+│  # —— 取数 / 选股 / 出图 ——
+├── em_fetch.py                    # ★ 东方财富取数（实时行情+历史K线，稳定直连）
+├── boll7_scan.py                  # 七轨布林线选股扫描（筛买入区标的）
+├── make_ppt_2026-06-11.py         # PPT 生成模板脚本（python-pptx）
+│
+│  # —— B站抓取脚本 ——
+├── bili_space.py                  # 抓 UP 空间全部动态（最全、可翻历史）
+├── bili_feedall_deep.py           # 深翻关注动态、解锁付费长文（OPUS动态）
+├── batch_subtitle_dl.py           # 按月批量下载视频字幕 → subtitles/
+├── asr_transcribe.py              # 视频无字幕时的 whisper 语音转写兜底
+│
+│  # —— 数据文件（脚本的原料/进度）——
+├── qfps_all_deep.json             # 动态正文存档（蒸馏原始语料，--resume 累积）
+├── qfps_all_deep.offset           # 动态抓取的翻页书签/进度光标
+├── qfps_video_catalog.json        # 视频目录（time/bvid/title），下字幕的索引
+└── subtitles/                     # 视频字幕原文
 ```
 
-> `★` = 核心文件。`models/`（1.5G 语音模型）和 `cookie.txt`（登录凭证）已被 `.gitignore` 排除，不入库。
+> `★` = 核心文件。`models/`（1.5G 语音模型）和 `cookie.txt`（B站登录凭证）已被 `.gitignore` 排除，不入库。
 
 ---
 
@@ -35,11 +46,30 @@
 
 | 文件 | 用途 |
 |---|---|
-| `框架规律库.md` | 从历次蒸馏提炼的规律，按"节奏/性质/选股/避险/产业"分类，带快速索引 |
-| `framework_qingge.md` | 博主完整方法论：情绪周期、宏观传导、选股纪律 |
-| `distill_*_morning/review.md` | 每天的进攻方向、关键信号、行动清单、可复用框架 |
+| `蒸馏/框架规律库.md` | 从历次蒸馏提炼的规律，按"节奏/性质/选股/避险/产业"分类，带快速索引 |
+| `蒸馏/framework_qingge.md` | 博主完整方法论：情绪周期、宏观传导、选股纪律 |
+| `蒸馏/distill_*_morning/review.md` | 每天的进攻方向、关键信号、行动清单、可复用框架 |
 | `em_fetch.py` | `from em_fetch import quotes, secid, kline`，取实时行情/前复权日K |
+| `boll7_scan.py` | 七轨布林线扫描，筛当前处于买入区的标的 |
 | `skills/qfps-stock/` | 让任意 Claude Code 项目自动调用本知识库的 Skill |
+
+---
+
+## 数据流水线
+
+两条线把博主原始内容变成 `蒸馏/` 里的成品：
+
+```
+动态线：bili_feedall_deep.py ──► qfps_all_deep.json (+.offset 进度)
+                                      └─► 蒸馏 ──► distill_*_morning/review.md
+
+视频线：qfps_video_catalog.json ──► batch_subtitle_dl.py ──► subtitles/
+                                      └─► 蒸馏 ──► distill_*_videos.md
+        （视频无字幕时用 asr_transcribe.py 做 whisper 语音转写兜底）
+```
+
+- 动态抓取靠 `--resume` + `.offset` 增量累积，**不覆盖历史**。
+- 取数/分析用 `em_fetch.py`，选股用 `boll7_scan.py`，出图用 `make_ppt_2026-06-11.py`（模板）。
 
 ---
 
