@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# 描述: 深翻关注动态、解锁付费长文（早盘/复盘OPUS动态抓取）→ qfps_all_deep.json
 """深翻「关注动态」feed/all,过滤指定UP,抓全文,看能往前翻到多早。
 付费长文因已订阅会在此接口解锁(与空间接口不同)。
 用法: python3 bili_feedall_deep.py [UP名] [--pages N]
