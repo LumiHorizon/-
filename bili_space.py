@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# 描述: 抓取 UP 空间全部动态（最全、可翻历史）→ qfps_space.json，并被 feedall 依赖
+# 描述: 抓取 UP 空间全部动态
 """抓取某 UP「空间」里的全部动态（比关注动态 feed 更全，可一直翻历史）。
 用法:
   python3 bili_space.py [host_mid] [--pages N] [--full] [--json out.json]
