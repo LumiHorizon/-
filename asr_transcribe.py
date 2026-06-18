@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# 描述: 视频无字幕时的 whisper 语音转写兜底（依赖 models/ 大模型）
+# 描述: whisper 语音转写兜底
 """对 qfps_remaining.json 中的 B 站视频做 ASR 转写(yt-dlp 下音频 -> ffmpeg 转 16k wav -> whisper.cpp)。
 输出追加到 qfps_asr_text.txt,格式与 qfps_videos_text.txt 一致;支持断点续跑(跳过已转写 bvid)。
 
