@@ -9,7 +9,9 @@
 ```
 .
 ├── README.md                      # 本文件
-├── 蒸馏/                          # ★ 所有蒸馏与框架 md
+├── .gitignore                     # git 忽略规则
+├── .claude/                       # Claude Code 项目配置
+├── 蒸馏/                          # ★ 蒸馏与框架文档
 │   ├── 框架规律库.md               # ★ 可复用规律库（按场景分类，先读这个）
 │   ├── framework_qingge.md        # ★ 完整方法论（情绪周期/宏观/选股体系）
 │   ├── 青枫浦上Q_逐月蒸馏.md        # 逐月汇总
@@ -18,23 +20,23 @@
 │   ├── distill_YYYY-MM-DD_morning.md  # 每日早盘蒸馏
 │   ├── distill_YYYY-MM-DD_review.md   # 每日复盘蒸馏
 │   └── distill_YYYY-MM_videos.md      # 当月视频蒸馏
-├── skills/qfps-stock/SKILL.md     # ★ Claude Code Skill（跨项目/跨机复用）
+├── skills/qfps-stock/SKILL.md     # ★ Claude Code Skill（跨项目复用）
 │
 │  # —— 取数 / 选股 / 出图 ——
-├── em_fetch.py                    # ★ 东方财富取数（实时行情+历史K线，稳定直连）
-├── boll7_scan.py                  # 七轨布林线选股扫描（筛买入区标的）
-├── make_ppt_2026-06-11.py         # PPT 生成模板脚本（python-pptx）
+├── em_fetch.py                    # ★ 东方财富取数模块（行情+K线）
+├── boll7_scan.py                  # 七轨布林线选股扫描
+├── make_ppt_2026-06-11.py         # PPT 生成模板脚本
 │
 │  # —— B站抓取脚本 ——
-├── bili_space.py                  # 抓 UP 空间全部动态（最全、可翻历史）
-├── bili_feedall_deep.py           # 深翻关注动态、解锁付费长文（OPUS动态）
-├── batch_subtitle_dl.py           # 按月批量下载视频字幕 → subtitles/
-├── asr_transcribe.py              # 视频无字幕时的 whisper 语音转写兜底
+├── bili_space.py                  # 抓取 UP 空间全部动态
+├── bili_feedall_deep.py           # 深翻关注动态、解锁付费长文
+├── batch_subtitle_dl.py           # 按月批量下载视频字幕
+├── asr_transcribe.py              # whisper 语音转写兜底
 │
 │  # —— 数据文件（脚本的原料/进度）——
-├── qfps_all_deep.json             # 动态正文存档（蒸馏原始语料，--resume 累积）
-├── qfps_all_deep.offset           # 动态抓取的翻页书签/进度光标
-├── qfps_video_catalog.json        # 视频目录（time/bvid/title），下字幕的索引
+├── qfps_all_deep.json             # 动态正文存档（蒸馏原始语料）
+├── qfps_all_deep.offset           # 抓取进度光标（--resume 用）
+├── qfps_video_catalog.json        # 视频目录（下字幕索引）
 └── subtitles/                     # 视频字幕原文
 ```
 
