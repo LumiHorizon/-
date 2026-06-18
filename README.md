@@ -79,7 +79,7 @@
 
 ```bash
 # 1. 克隆
-git clone git@github.com:Bubbling-Cola/-.git ~/qfps-kb
+git clone git@github.com:LumiHorizon/-.git ~/qfps-kb
 
 # 2. 激活 Skill（用户级，所有项目可用；软链接以便随 git 更新）
 mkdir -p ~/.claude/skills
