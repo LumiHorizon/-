@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# 描述: 按月批量下载视频字幕 → subtitles/（视频蒸馏的数据源）
 """
 批量下载字幕：从 qfps_video_catalog.json 取指定月份的视频，
 把字幕存到 subtitles/{date}_{bvid}_{safe_title}.txt
