@@ -9,14 +9,15 @@
 ```
 .
 ├── README.md                      # 本文件
-├── 框架规律库.md                   # ★ 可复用规律库（按场景分类，先读这个）
-├── framework_qingge.md            # ★ 完整方法论（情绪周期/宏观/选股体系）
-├── 青枫浦上Q_逐月蒸馏.md           # 逐月汇总
-├── 青枫浦上Q_视频蒸馏.md           # 视频汇总
-├── 青枫浦上Q_动态蒸馏.md           # 动态汇总
-├── distill_YYYY-MM-DD_morning.md  # 每日早盘蒸馏
-├── distill_YYYY-MM-DD_review.md   # 每日复盘蒸馏
-├── distill_YYYY-MM_videos.md      # 当月视频蒸馏
+├── 蒸馏/                          # ★ 所有蒸馏与框架 md
+│   ├── 框架规律库.md               # ★ 可复用规律库（按场景分类，先读这个）
+│   ├── framework_qingge.md        # ★ 完整方法论（情绪周期/宏观/选股体系）
+│   ├── 青枫浦上Q_逐月蒸馏.md        # 逐月汇总
+│   ├── 青枫浦上Q_视频蒸馏.md        # 视频汇总
+│   ├── 青枫浦上Q_动态蒸馏.md        # 动态汇总
+│   ├── distill_YYYY-MM-DD_morning.md  # 每日早盘蒸馏
+│   ├── distill_YYYY-MM-DD_review.md   # 每日复盘蒸馏
+│   └── distill_YYYY-MM_videos.md      # 当月视频蒸馏
 ├── em_fetch.py                    # ★ 东方财富取数（行情+K线，稳定直连）
 ├── bili_*.py / asr_transcribe.py  # B站抓取 / 字幕 / 语音转写脚本
 ├── boll7_scan.py                  # 选股扫描脚本
