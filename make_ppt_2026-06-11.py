@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# 描述: 复盘/早盘 PPT 生成模板脚本（python-pptx），改数据即可复用
+# 描述: PPT 生成模板脚本
 from pptx import Presentation
 from pptx.util import Inches, Pt
 from pptx.dml.color import RGBColor
